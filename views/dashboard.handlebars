@@ -1,0 +1,135 @@
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+
+input[type=text], input[type=password], input[type=email] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	text-align: center;
+	
+}
+
+form[novalidate] input {
+border-left-width: 8px;
+border-color: #3498db;
+border-style: solid;
+}
+
+input[required].ng-pristine {
+border-color: #e74c3c;
+}
+
+input.ng-valid.ng-dirty {
+border-color: #2ecc71;
+}
+
+
+
+
+select[name=text] {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	text-align: justify;
+
+}
+
+button {
+text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 13%;
+	text-decoration:none;
+}
+
+
+
+label {
+justify:right;
+}
+
+#erroruser{
+display:none;
+}
+
+display {
+display:visible;
+}
+
+nodisplay {
+display:none;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-1.10.2.ks"></script>	
+<script src="//ajax.googleapis.com/ajax.libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+<script type="text/javascript" src="methods.js">
+
+<script>
+	var user=getCookie("status");
+if(user !=1) {
+	window.location= '/index';
+}
+</script>
+
+<form name="frmdash">
+<center><b>WELCOME User!!!</b></center>
+<marquee><img src="AMA.png" height="150" width="150"></marquee>
+<br><a href="index"><center><button type="button" id="logoutdash" onclick="index()">Log-out</button></center></a>
+</div>
+</div>
+</form>
+
+
+<script type="text/javascript" src="methods.js">
+</script>

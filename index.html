@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+
+input[type=text], input[type=password], input[type=email] {
+    width: 20%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	text-align: center;
+	
+}
+
+
+.directive('onlyDigits', function () {
+    return {
+      require: 'ngModel',
+      restrict: 'A',
+      link: function (scope, element, attr, ctrl) {
+        function inputValue(val) {
+          if (val) {
+            var digits = val.replace(/[^0-9]/g, '');
+
+            if (digits !== val) {
+              ctrl.$setViewValue(digits);
+              ctrl.$render();
+            }
+            return parseInt(digits,10);
+          }
+          return undefined;
+        }            
+        ctrl.$parsers.push(inputValue);
+      }
+    };
+});
+});
+
+form[novalidate] input {
+border-left-width: 8px;
+border-color: #3498db;
+border-style: solid;
+}
+
+input[required].ng-pristine {
+border-color: #e74c3c;
+}
+
+input.ng-valid.ng-dirty {
+border-color: #2ecc71;
+}
+
+
+
+
+select[name=text] {
+	width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	text-align: justify;
+
+}
+
+button {
+text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 13%;
+	text-decoration:none;
+}
+
+
+
+label {
+justify:right;
+}
+
+#erroruser{
+display:none;
+}
+
+display {
+display:visible;
+}
+
+nodisplay {
+display:none;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+</style>
+
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+  <div class="container" style="background-color:#f1f1f1">
+  <head>
+  <title>SAMPLE LOG-IN</title>
+ <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles1.0.css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<style>
+	input.ng-invalid(border:1px solid red;})
+	</style>
+	
+	<script>
+        var signedin = {dataAcc: [
+            {username: "kevin", password: "kevin"},
+            {username: "kevin", password: "kevin"}
+        ]};
+      
+
+    </script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	var counter=0;
+$(document).ready(function(){
+    $("#loginhome").click(function(){
+    $(document).ready(function () {
+      var jsonString = '[{"emailaddress":"Paul@gmail.com","passwordlog":"Qwerty12"},{"emailaddress":"Gyn@gmail.com","passwordlog":"Qwerty23"}]';
+
+      var employeesJSON = JSON.parse(jsonString);
+     
+	 var result = '';
+      $.each(employeesJSON, function (i, item){
+        result += 'emailaddress = ' + item.emailaddress + '<br/>';
+        result += 'passwordlog = ' + item.passwordlog + '<br/>';
+
+        var a = document.getElementById('userlogin').value;
+        var b = document.getElementById('passwordlog').value;
+        if(a == item.emailaddress && b == item.passwordlog){
+		
+          alert("Successfully signed-in!!!");
+          return false;
+        }
+        else{
+          if(counter--!=0){
+            return true;
+          }
+          else{
+            return false;
+          }
+        }
+      });
+      $('#demos').html(result);
+    });
+    });
+});
+
+</script>
+</head>
+
+<body>
+<div class ="container">
+<div id="ShowDash">
+<form name="frmdash">
+<center><b>WELCOME User!!!</b></center>
+<marquee><img src="AMA.png" height="150" width="150"></marquee>
+<br><center><button type="button" id="backlogindash">Back</button></center>
+</div>
+</div>
+</form>
+
+  <div class="container" >
+  <div id="ShowLog">
+  <h1><center>Login Form</h1>
+  <form name ="frm1">
+			<div>
+			<center><b>Username:</b>
+			<input type="text" name="name" id="userlogin" ng-model="user.name"  required/>
+			
+			</div>
+				<div>
+			<center><b>Password:</b>
+			<input type="password" name="passwordlogin" id="passwordlog" ng-model="user.passwordlogin" ng-minlength="5"   required/>
+		
+		
+        <br>
+	<br>
+	
+    <button ng-disabled="frm.$invalid" id="loginhome" >Login</button>
+	<button type="button" id="registration">Registration</button>
+		<br><br>
+    <input type="checkbox" checked="checked"> Remember me?
+</div>
+</div>
+			</form>
+  
+
+  <div class="container" >
+  <div id="ShowReg">
+  <h1><center>Registration Form</h1>
+  <form name="frm">
+			<center><b>Username:</b>
+			<div>
+			<input type="text" name="username" ng-model="user.username" required/>
+			</div>
+			
+			<center><b>Password:</b>
+			<div>
+			<input type="password" name="password" ng-model="user.password" ng-minlength="5"   required/>
+			</div>
+			
+			
+			<center><b>Confirm Password:</b>
+			<div>
+			<input type="password" name="confirmpassword" ng-model="user.confirmpassword" ng-minlength="5" required/>
+		
+			</div>
+			
+			<b>Email-Address:</b>
+			<div>
+			<input type="email" name="email" ng-model="user.email"  required/>
+			</div>
+
+
+	
+			<center><b>Address:</b>
+			<div>
+			<input type="text" name="address" ng-model="user.address" required/>
+			
+			</div>
+			
+			<b>Age:</b>
+			<div>
+			<input type="text" name="age" ng-model="user.age"  ng-maxlength="3"  onlyDigits required/>
+			
+			</div>
+			
+        <br>
+		<br>
+		<br>
+			
+
+	<button ng-disabled="frm.$invalid" id ="register" novalidate>Register</button>
+	<button type="button" id="back">Back</button>
+		<br><br>
+		  
+  </div>
+
+</form>
+
+
+ <script>
+
+         $(document).ready(function(){
+        $( "#register" ).click(function( event ) {
+        event.preventDefault();
+
+            
+            for(i = 0; i < signedin.dataAcc.length; i++){
+            
+			$( "#ShowReg" ).hide();
+			$( "#ShowDash" ).show();
+            }
+        });
+        $( "#login" ).click(function( event ) {
+        event.preventDefault();
+            var userlogged = $("#username");
+            for(i = 0; i < signedin.dataAcc.length; i++){
+            if( username == signedin.dataAcc[i].userlogged){
+              
+            }
+            }
+        });
+        });
+        </script>
+    </div>
+ <script>
+    $( "#ShowReg" ).hide();
+    $( "#ShowDash" ).hide();
+    $( "#ShowLog" ).show();  
+    
+        
+    $(document).ready(function(){
+        $( "#registration" ).click(function( event ) {
+        event.preventDefault();
+        $( "#ShowLog" ).hide();
+        $( "#ShowReg" ).show();
+        });
+          
+        $( "#back" ).click(function( event ) {
+        event.preventDefault();
+        $( "#ShowReg" ).hide();
+        $( "#ShowLog" ).show();
+        });
+
+        $( "#backlogindash" ).click(function( event ) {
+          event.preventDefault();
+          $( "#ShowDash" ).hide();
+          $( "#ShowLog" ).show();
+        });
+
+    });
+</script>
+
+</body>
+</html>
+
